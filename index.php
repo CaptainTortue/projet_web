@@ -1,10 +1,11 @@
 <?php
         include("include/connexion.inc.php");
+        include("ajout_personnes.php");
         // mettre le contenu du fichier dans une variable
         $json = file_get_contents("exemple_json.json"); 
         // décoder le flux JSON
         $data = json_decode($json, true); 
-        // accéder à l'élément approprié
+        // création variables pour thèse
         $these_sur_travaux;
         $date_soutenance;
         $directeurs_these;
@@ -22,75 +23,114 @@
         $code_etab;
         $auteurs;
         $accessible;
+
+        // création variables pour oai_set_specs
+        $oai_set_specs;
+
+        // création variables pour sujets
+        $langue;
+        $sujet;
+
+        // création variable de transition pour les personnes
+        $directeurs_these;
+
         print(count($data));
         foreach($data as $these) {
                 if (isset($these["these_sur_travaux"])) {
-                        echo $these["these_sur_travaux"];
-                        echo "<br/>";
+                        $these_sur_travaux = $these["these_sur_travaux"];
+                        echo "1<br/>";
                 }
                 if (isset($these["date_soutenance"])) {
-                        echo $these["date_soutenance"];
-                        echo "<br/>";
+                        $date_soutenance = $these["date_soutenance"];
+                        echo "2<br/>";
                 }
                 if (isset($these["directeurs_these"])) {
-                        //echo $these["directeurs_these"]; different
-                        echo "<br/>";
+                        ajout_personnes($these["directeurs_these"]); // présent dans un fichier ajout_personne
+                        echo "2bis<br/>";
                 }
                 if (isset($these["etablissements_soutenance"])) {
-                        echo $these["etablissements_soutenance"][0]["nom"];
-                        echo "<br/>";
+                        $etablissements_soutenance = $these["etablissements_soutenance"][0]["nom"];
+                        echo "3<br/>";
                 }
                 if (isset($these["discipline"])) {
-                        echo $these["discipline"]["fr"];
-                        echo "<br/>";
+                        $discipline =  $these["discipline"]["fr"];
+                        echo "4<br/>";
                 }
                 if (isset($these["oai_set_specs"])) {
                         //echo $these["oai_set_specs"]; different
-                        echo "<br/>";
+                        echo "5<br/>";
                 }
                 if (isset($these["president_jury"])) {
-                        //echo $these["president_jury"]; different
-                        echo "<br/>";
+                        ajout_personnes($these["president_jury"]); // présent dans un fichier ajout_personne
+                        echo "6<br/>";
                 }
                 if (isset($these["iddoc"])) {
-                        echo $these["iddoc"]; // correspond a idThese
-                        echo "<br/>";
+                        $iddoc =  $these["iddoc"]; // correspond a idThese
+                        echo "7<br/>";
                 }
                 if (isset($these["nnt"])) {
-                        echo $these["nnt"];
-                        echo "<br/>";
+                        $nnt = $these["nnt"];
+                        echo "8<br/>";
                 }
                 if (isset($these["ecoles_doctorales"])) {
-                        echo $these["ecoles_doctorales"][0]["nom"];
-                        echo "<br/>";
+                        $ecoles_doctorales = $these["ecoles_doctorales"][0]["nom"];
+                        echo "9<br/>";
                 }
                 if (isset($these["embargo"])) {
-                        echo $these["embargo"];
-                        echo "<br/>";
+                        $embargo = $these["embargo"];
+                        echo "10<br/>";
                 }
                 if (isset($these["status"])) {
-                        echo $these["status"];
-                        echo "<br/>";
+                        $status = $these["status"];
+                        echo "11<br/>";
                 }
                 if (isset($these["source"])) {
-                        echo $these["source"];
-                        echo "<br/>";
+                        $source = $these["source"];
+                        echo "12<br/>";
                 }
                 if (isset($these["accessible"])) {
-                        echo $these["accessible"];
-                        echo "<br/>";
+                        $accessible = $these["accessible"];
+                        echo "13<br/>";
                 }
                 if (isset($these["langue"])) {
-                        echo $these["langue"];
-                        echo "<br/>";
+                        $langue = $these["langue"];
+                        echo "14<br/>";
                 }
                 if (isset($these["code_etab"])) {
-                        echo $these["code_etab"];
-                        echo "<br/>";
+                        $code_etab = $these["code_etab"];
+                        echo "15<br/>";
                 }
                 if (isset($these["auteurs"])) {
-                        //echo $these["auteurs"]; différent 
-                        echo "<br/>";
+                        ajout_personnes($these["auteurs"]); // présent dans un fichier ajout_personne
+                        echo "16<br/>";
+                }
+                if (isset($these["titres"])) {
+                        //echo $these["titres"]; différent 
+                        echo "17<br/>";
+                }
+                if (isset($these["resumes"])) {
+                        //echo $these["resumes"]; différent 
+                        echo "18<br/>";
+                }
+                if (isset($these["sujets"])) {
+                        //echo $these["sujets"]; différent 
+                        echo "19<br/>";
+                }
+                if (isset($these["membres_jury"])) {
+                        ajout_personnes($these["membres_jury"]); // présent dans un fichier ajout_personne
+                        echo "20<br/>";
+                }
+                if (isset($these["partenaires_recherche"])) {
+                        ajout_personnes($these["partenaires_recherche"]); // présent dans un fichier ajout_personne
+                        echo "21<br/>";
+                }
+                if (isset($these["sujets_rameau"])) {
+                        //echo $these["sujets_rameau"]; différent 
+                        echo "22<br/>";
+                }
+                if (isset($these["rapporteurs"])) {
+                        ajout_personnes($these["rapporteurs"]); // présent dans un fichier ajout_personne
+                        echo "23<br/>";
                 }
         }
         echo "gugg";
