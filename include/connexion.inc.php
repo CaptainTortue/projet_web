@@ -10,7 +10,9 @@
     // var_dump() sert de debug, affiche le type taille de la variable
     
     try {
-        $cnx = new PDO('mysql:host=localhost;dbname=projet_web', $nom, $mdp);
+        $options = array(PDO::MYSQL_ATTR_INIT_COMMAND=>'SET NAMES utf8');
+
+        $cnx = new PDO('mysql:host=localhost;dbname=projet_web', $nom, $mdp, $options);
     }
     catch (PDOException $e) {
         echo "ERREUR : La connexion a échouée";
