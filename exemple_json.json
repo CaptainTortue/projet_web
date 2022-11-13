@@ -1,137 +1,88 @@
 [
-{
+  {
+
     "these_sur_travaux": "non",
-    "date_soutenance": "2012-07-16",
+    "date_soutenance": "2001-01-01",
     "directeurs_these": [
       {
-        "nom": "Di Mascolo",
-        "prenom": "Maria",
-        "idref": "077747275"
-      },
-      {
-        "nom": "Espinouse",
-        "prenom": "Marie-Laure",
-        "idref": "120582988"
+        "nom": "Palloix",
+        "prenom": "Alain",
+        "idref": "031463150"
       }
     ],
     "etablissements_soutenance": [
       {
-        "idref": "030327202",
-        "nom": "Grenoble"
+        "idref": "026402882",
+        "nom": "Aix-Marseille 2"
       }
     ],
     "discipline": {
-      "fr": "Sciences et technologie industrielles"
+      "fr": "Microbiologie moléculaire et biotechnologie"
     },
     "oai_set_specs": [
-      "ddc:620"
+      "ddc:570"
     ],
-    "president_jury": {
-      "nom": "Sebo",
-      "prenom": "Andras",
-      "idref": null
-    },
+    "president_jury": {},
     "@version": "1",
-    "iddoc": 92035,
-    "nnt": "2012GRENI014",
-    "ecoles_doctorales": [
-      {
-        "idref": "149399367",
-        "nom": "École doctorale Ingénierie - matériaux mécanique énergétique environnement procédés production (Grenoble)"
-      }
-    ],
+    "iddoc": 712239,
+    "nnt": "2002AIX22014",
+    "ecoles_doctorales": [],
     "embargo": null,
     "status": "soutenue",
-    "source": "star",
-    "accessible": "oui",
-    "langue": "fr",
-    "@timestamp": "2022-03-01T12:59:57.692Z",
-    "code_etab": "GREN",
-    "cas": "cas1",
+    "source": "sudoc",
+    "accessible": "non",
+    "langue": "enfr",
+    "@timestamp": "2022-03-01T13:04:48.489Z",
+    "code_etab": "AIX2",
+    "cas": "cas5",
     "titres": {
-      "en": "Optimization for loading of washers in a hospital sterilization service : scheduling, simulation, coupling",
-      "fr": "Optimisation du chargement des laveurs dans un service de stérilisation hospitalière : ordonnancement, simulation, couplage"
+      "en": "Introgression of a polygenic resistance to powdery mildew into peach (Prunus persica) from a wild species Prunus davidiana",
+      "enfr": "Introgression d'une résistance polygénique à l'oi͏̈dium chez le pêcher Prunus persica à partir d'une espèce sauvage Prunus davidiana"
     },
-    "resumes": {
-      "en": "In this dissertation, we are interested in the problem of loading of washing resources in hospital sterilization services of reusable medical devices (RMD). Through our studies, we modeled the problem of loading of washing resources as a batch scheduling problem. We began our research with offline studies for whom exact algorithms are proposed for some special cases and then heuristics, approximation algorithms and linear models are proposed for general cases. Afterwards, we continued our research with semi-online and online studies for whom heuristics are developed. We inserted these heuristics also in simulation models in order to test their efficiency on the whole sterilization service. We finished our studies with a final work aiming at minimizing the number of washing cycles for an external sterilization service where we adopted a bin packing approach.",
-      "fr": "Dans cette thèse, nous nous intéressons au problème de chargement des laveurs dans un service de stérilisation de dispositifs médicaux réutilisables (DMR). Ce problème de chargement des laveurs a été considéré comme un problème d'ordonnancement par batch. Nous présentons, dans un premier temps, des études offline pour lesquelles nous avons développé des algorithmes, exacts et approchés, ainsi que des modèles PLNE pour certains cas particuliers et pour des cas généraux. Nous présentons ensuite des études semi-online et online pour lesquelles nous avons développé des heuristiques. Nous avons également conçu des modèles de simulation afin de tester l'impact de nos heuristiques sur l'ensemble du service de stérilisation. Nous proposons, en dernier lieu, l'implémentation d'une approche de type bin packing pour le cas d'un service de stérilisation externe afin de minimiser le nombre de cycles de lavage lancés."
-    },
-    "sujets": {
-      "en": [
-        "Hospital sterilization",
-        "Operations research",
-        "Scheduling",
-        "Simulation"
-      ],
-      "fr": [
-        "Stérilisation hospitalière",
-        "Recherche opérationnelle",
-        "Ordonnancement",
-        "Simulation"
-      ]
-    },
-    "membres_jury": [
-      {
-        "nom": "Di Mascolo",
-        "prenom": "Maria",
-        "idref": "077747275"
-      },
-      {
-        "nom": "Espinouse",
-        "prenom": "Marie-Laure",
-        "idref": "120582988"
-      },
-      {
-        "nom": "Gourgand",
-        "prenom": "Michel",
-        "idref": null
-      },
-      {
-        "nom": "Sahin",
-        "prenom": "Evren",
-        "idref": null
-      },
-      {
-        "nom": "Gouin",
-        "prenom": "Alexia",
-        "idref": null
-      }
-    ],
+    "resumes": {},
+    "sujets": {},
+    "membres_jury": [],
     "partenaires_recherche": [
       {
-        "type": "equipeRecherche",
-        "nom": "Sciences pour la Conception, l'Optimisation et la Production de Grenoble",
-        "idref": null
+        "type": "autreType",
+        "nom": "Université d'Aix-Marseille II. Faculté des sciences",
+        "idref": "059547855"
       }
     ],
     "sujets_rameau": [
       {
-        "type_vedette": "vedetteRameauNomCommun",
+        "type_vedette": "vedetteRameauGenreForme",
         "element_entree": {
           "contenu": null,
           "idref": null
         },
         "subdivisions": []
-      }
-    ],
-    "rapporteurs": [
-      {
-        "nom": "Billaut",
-        "prenom": "Jean-charles",
-        "idref": null
       },
       {
-        "nom": "Dupont",
-        "prenom": "Lionel",
-        "idref": null
+        "type_vedette": "vedetteRameauNomCommun",
+        "element_entree": {
+          "contenu": "Pêcher",
+          "idref": "027792617"
+        },
+        "subdivisions": []
+      },
+      {
+        "type_vedette": "vedetteRameauNomCommun",
+        "element_entree": {
+          "contenu": "Marqueurs génétiques",
+          "idref": "034132287"
+        },
+        "subdivisions": []
       }
     ],
+    "rapporteurs": [],
     "auteurs": [
       {
-        "nom": "Ozturk",
-        "prenom": "Onur",
-        "idref": "164970223"
+        "nom": "Foulongne",
+        "prenom": "Marie",
+        "idref": "067319149"
       }
     ]
+  
   }
 ]

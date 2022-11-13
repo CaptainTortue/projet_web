@@ -12,15 +12,19 @@
         include("./include/connexion.inc.php");
         $nom = $_POST['nom'];
         $mdp = $_POST['mdp'];
-
         if ((!isset($_POST['nom'])) && (!isset($_POST['mdp']))) {
             exit("Veuillez réessayer");
+            header('Refresh:2; url=index.php');
         }
         if ("test" == $nom && "test" == $mdp) {
-            echo("<p>uhufe</p>");
+            echo"oui";
+            $_SESSION["login"] = "test";
+            header('Refresh:2; url=acueil.php');
+        } else {
+            echo("Identifiant/mot de passe invalide");
+            header('Refresh:2; url=index.php');
         }
 
     ?>
-    <p>ufzehuie</p>
 </body>
 </html>
