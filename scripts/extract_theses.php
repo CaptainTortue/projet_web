@@ -1,11 +1,11 @@
 <?php
+        include("get_index_these.php");
         include("ajout_personnes.php");
         include("ajout_partenaires.php");
         include("ajout_relation.php");
         include("ajout_texte.php");
         include("ajout_sujets.php");
         include("ajout_oai_set_specs.php");
-        include("get_index_these.php");
 
         // création variables pour thèse
         $these_sur_travaux;
@@ -22,11 +22,13 @@
         $langue;
 
 
+
         // création variables pour sujets
         $langue;
         $sujet;
 
-        function extract_theses($idThese, $cnx) {
+        function extract_theses($cnx) {
+                $idThese = get_index_these($cnx);
                 // mettre le contenu du fichier dans une variable
                 //$json = file_get_contents("exemple_json.json"); 
                 $json = file_get_contents("extract_theses.json"); 

@@ -28,8 +28,9 @@
     </main>
 <?php
         // si on veut extraire le jeu de données
-        //include("extract_theses.php");
-        //extract_theses($idThese, $cnx);
+        //include("include/connexion.inc.php");
+        //include("./scripts/extract_theses.php");
+        //extract_theses($cnx);
 ?>        
 </body>
 </html>

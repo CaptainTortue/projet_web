@@ -94,9 +94,6 @@
                 $id += 1;
             }
         }
-        // si on veut extraire le jeu de données
-        //include("extract_theses.php");
-        //extract_theses($idThese, $cnx);
 ?>     
 <footer> 
 <nav class="navbar navbar-expand-lg bg-light">
