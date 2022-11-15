@@ -1,4 +1,5 @@
 <?php
+        // attention il faut déjà avoir une base de donnée avec la bonne structure qui contient les tables
         include("get_index_these.php");
         include("ajout_personnes.php");
         include("ajout_partenaires.php");

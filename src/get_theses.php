@@ -20,21 +20,17 @@ function get_these($cnx) {
             $request .= " AND personnes.prenom LIKE :prenom";
         }
         if (isset($_POST["titre"]) && $_POST["titre"]!="") {
-            echo ("titre");
             $titre = "%".$_POST["titre"]."%";
             $request .= " AND titres.titre LIKE :titre";
         } 
         $theses = $cnx->prepare($request);
         if (isset($_POST["prenom"]) && $_POST["prenom"]!="") {
-            echo ("prenom");
             $theses->bindParam(':prenom', $prenom, PDO::PARAM_STR);  
         } 
         if (isset($_POST["nom"]) && $_POST["nom"]!="") {
-            echo ("nom");
             $theses->bindParam(':nom', $nom, PDO::PARAM_STR);  
         }
         if (isset($_POST["titre"]) && $_POST["titre"]!="") {
-            echo ("titre");
             $theses->bindParam(':titre', $titre, PDO::PARAM_STR);  
         }
         //$theses->debugDumpParams();
