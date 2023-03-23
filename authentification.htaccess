@@ -1,6 +1,0 @@
-# AuthGroupFile /dev/null
-# non fonctonnel
-AuthName "Authentification"
-AuthType Basic
-AuthUserFile .\authentification\authentification.htpasswd
-require valid-user

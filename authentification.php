@@ -23,7 +23,7 @@
             if ($user["login"] == $login && password_verify($mdp, $user["password"])) {
                 echo 'oui';
                 $_SESSION["login"] = $login;
-                header('Location: ./src/acueil.php');
+                header('Location: ./src/');
                 return;
             } 
         }

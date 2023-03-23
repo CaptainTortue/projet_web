@@ -1,0 +1,12 @@
+# AuthGroupFile /dev/null
+# non fonctonnel
+
+# parti a decommenter
+ AuthBasicAuthoritative On
+ AuthUserFile "D:\laragon\www\projet_dev_web\.htpasswd"
+ AuthGroupFile /dev/null
+ AuthName "Authentification"
+ AuthType Basic
+ <Limit GET>
+ require valid-user
+ </Limit>

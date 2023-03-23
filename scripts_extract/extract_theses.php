@@ -5,6 +5,7 @@
         include("ajout_partenaires.php");
         include("ajout_relation.php");
         include("ajout_texte.php");
+        include("ajout_etablissements.php");
         include("ajout_sujets.php");
         include("ajout_oai_set_specs.php");
 
@@ -48,8 +49,8 @@
                                 //echo "2<br/>";
                         }
                         if (isset($these["etablissements_soutenance"])) {
-                                $etablissements_soutenance = $these["etablissements_soutenance"][0]["nom"];
-                                //echo "3    ".$these["etablissements_soutenance"][0]["nom"]."  <br/>";
+                                $etablissements_soutenance = ajout_etablissements($these["etablissements_soutenance"], $cnx);
+                                echo "3    ".$these["etablissements_soutenance"][0]["nom"]."  <br/>";
                         }
                         if (isset($these["discipline"]["fr"])) {
                                 $discipline =  $these["discipline"]["fr"];
