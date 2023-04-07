@@ -28,6 +28,15 @@ body {
     flex-wrap: wrap;
 }
 
+.bouton  {
+  display: inline-block;
+  border-radius: 2px;
+  border: solid white 2px;
+  color: black;
+  background-color: white;
+  text-decoration: none;
+}
+
 .group_form {
   background-color: rgb(76, 76, 146);
   padding: 2vh 5vw 2vh 5vw;

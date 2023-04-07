@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : ven. 07 avr. 2023 à 19:39
+-- Généré le : ven. 07 avr. 2023 à 21:42
 -- Version du serveur : 8.0.30
 -- Version de PHP : 8.1.10
 
@@ -29,15 +29,15 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `alert` (
   `id` int NOT NULL,
-  `titre` varchar(255) NOT NULL,
-  `address` varchar(255) NOT NULL,
-  `filtreType` varchar(255) DEFAULT NULL,
-  `filtreNom` varchar(255) DEFAULT NULL,
-  `filtrePrenom` varchar(255) DEFAULT NULL,
-  `filtreTitre` varchar(255) DEFAULT NULL,
-  `filtreDiscipline` varchar(255) DEFAULT NULL,
+  `titre` varchar(255) COLLATE utf8mb4_bin NOT NULL,
+  `address` varchar(255) COLLATE utf8mb4_bin NOT NULL,
+  `filtreType` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,
+  `filtreNom` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,
+  `filtrePrenom` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,
+  `filtreTitre` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,
+  `filtreDiscipline` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,
   `user` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 -- --------------------------------------------------------
 
@@ -48,7 +48,7 @@ CREATE TABLE `alert` (
 CREATE TABLE `auteurs` (
   `idPersonne` int NOT NULL,
   `idThese` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
 -- Déchargement des données de la table `auteurs`
@@ -1426,7 +1426,7 @@ INSERT INTO `auteurs` (`idPersonne`, `idThese`) VALUES
 CREATE TABLE `directeurs` (
   `idThese` int NOT NULL,
   `idPersonne` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
 -- Déchargement des données de la table `directeurs`
@@ -2817,8 +2817,8 @@ INSERT INTO `directeurs` (`idThese`, `idPersonne`) VALUES
 
 CREATE TABLE `oai_set_specs` (
   `idThese` int NOT NULL,
-  `code` varchar(8) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `code` varchar(8) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 -- --------------------------------------------------------
 
@@ -2828,10 +2828,10 @@ CREATE TABLE `oai_set_specs` (
 
 CREATE TABLE `partenaires` (
   `id` int NOT NULL,
-  `letype` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `nom` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `idref` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `letype` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `nom` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `idref` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
 -- Déchargement des données de la table `partenaires`
@@ -3131,10 +3131,10 @@ INSERT INTO `partenaires` (`id`, `letype`, `nom`, `idref`) VALUES
 
 CREATE TABLE `personnes` (
   `id` int NOT NULL,
-  `nom` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `prenom` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `nom` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `prenom` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `idref` int DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
 -- Déchargement des données de la table `personnes`
@@ -6088,7 +6088,7 @@ INSERT INTO `personnes` (`id`, `nom`, `prenom`, `idref`) VALUES
 CREATE TABLE `rapporteurs` (
   `idPersonne` int NOT NULL,
   `idThese` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
 -- Déchargement des données de la table `rapporteurs`
@@ -6324,9 +6324,9 @@ INSERT INTO `rapporteurs` (`idPersonne`, `idThese`) VALUES
 
 CREATE TABLE `resumes` (
   `idThese` int NOT NULL,
-  `langue` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `resume` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `langue` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `resume` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
 -- Déchargement des données de la table `resumes`
@@ -6382,7 +6382,7 @@ INSERT INTO `resumes` (`idThese`, `langue`, `resume`) VALUES
 CREATE TABLE `soutiens` (
   `idThese` int NOT NULL,
   `idPartenaire` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
 -- Déchargement des données de la table `soutiens`
@@ -6908,9 +6908,9 @@ INSERT INTO `soutiens` (`idThese`, `idPartenaire`) VALUES
 
 CREATE TABLE `sujets` (
   `idThese` int NOT NULL,
-  `langue` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `sujet` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `langue` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `sujet` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
 -- Déchargement des données de la table `sujets`
@@ -7488,19 +7488,19 @@ INSERT INTO `sujets` (`idThese`, `langue`, `sujet`) VALUES
 
 CREATE TABLE `theses` (
   `id` int NOT NULL,
-  `these_sur_travaux` varchar(3) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `these_sur_travaux` varchar(3) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `date_soutenance` date NOT NULL,
-  `etablissements_soutenance` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `discipline` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `etablissements_soutenance` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `discipline` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `president_jury` int DEFAULT NULL,
-  `nnt` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `ecoles_doctorales` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `nnt` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `ecoles_doctorales` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
   `embargo` date DEFAULT NULL,
-  `status` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `source` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `estAccessible` varchar(3) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `langue` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `status` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `source` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `estAccessible` varchar(3) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
+  `langue` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
 -- Déchargement des données de la table `theses`
@@ -8883,9 +8883,9 @@ INSERT INTO `theses` (`id`, `these_sur_travaux`, `date_soutenance`, `etablisseme
 
 CREATE TABLE `titres` (
   `idThese` int NOT NULL,
-  `langue` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `titre` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `langue` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `titre` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
 -- Déchargement des données de la table `titres`
@@ -10173,9 +10173,9 @@ INSERT INTO `titres` (`idThese`, `langue`, `titre`) VALUES
 
 CREATE TABLE `users` (
   `id` int NOT NULL,
-  `login` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `login` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
 -- Déchargement des données de la table `users`

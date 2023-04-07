@@ -3,15 +3,17 @@
     /*
     * création d'objet PDO de la connexion qui sera représenté par la variable $cnx
     */
+    //$nom = "tristan.martinez";
+    //$mdp = "Tristan.1999";
     $nom = "root";
     $mdp = "";
-
     // exec() tout est stocké dans argv pour récupe les paramètre (ou les retours)
     // var_dump() sert de debug, affiche le type taille de la variable
     
     try {
         $options = array(PDO::MYSQL_ATTR_INIT_COMMAND=>'SET NAMES utf8');
 
+        //$cnx = new PDO('mysql:host=sqletud.u-pem.fr;dbname=tristan.martinez_db', $nom, $mdp, $options);
         $cnx = new PDO('mysql:host=localhost;dbname=projet_web', $nom, $mdp, $options);
     }
     catch (PDOException $e) {

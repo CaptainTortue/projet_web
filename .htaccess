@@ -3,7 +3,9 @@
 
 # parti a decommenter
  AuthBasicAuthoritative On
- AuthUserFile "C:\laragon\www\projet_web\.htpasswd"
+     AuthUserFile "C:\laragon\www\projet_web\.htpasswd"
+#AuthUserFile "/home/3binf2/tristan.martinez/WWW-perso/projet_dev_web/.htpasswd"
+
  AuthGroupFile /dev/null
  AuthName "Authentification"
  AuthType Basic

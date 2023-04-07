@@ -18,11 +18,18 @@
     <link rel="stylesheet" href="../../css/acueil.css">
 
     <?php
+
+        include("/home/3binf2/tristan.martinez/WWW-perso/projet_dev_web/include/connexion.inc.php");
+        include("/home/3binf2/tristan.martinez/WWW-perso/projet_dev_web/scripts/getAlertUser.php");
+        include("/home/3binf2/tristan.martinez/WWW-perso/projet_dev_web/scripts/getTheses.php");
+        include("/home/3binf2/tristan.martinez/WWW-perso/projet_dev_web/scripts/addAlertUser.php");
+
+        /*
         include("../../include/connexion.inc.php");
         include("../../scripts/getAlertUser.php");
         include("../../scripts/getTheses.php");
         include("../../scripts/addAlertUser.php");
-
+        */
         /*// Include library files
         require 'PHPMailer/Exception.php';
         require 'PHPMailer/PHPMailer.php';

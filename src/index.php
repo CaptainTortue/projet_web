@@ -5,6 +5,7 @@
     if (!isset($_SESSION["size_texte"])) {
         $_SESSION["size_texte"] = 1;
     }
+
 ?>
 <html lang="fr">
 <head>
@@ -25,6 +26,21 @@
 
         
         <?php
+
+            include("/home/3binf2/tristan.martinez/WWW-perso/projet_dev_web/include/connexion.inc.php");
+            include("/home/3binf2/tristan.martinez/WWW-perso/projet_dev_web/scripts/getTheses.php");
+            include("/home/3binf2/tristan.martinez/WWW-perso/projet_dev_web/manipulationTheses/getNumberOfTheses.php");
+            include("/home/3binf2/tristan.martinez/WWW-perso/projet_dev_web/manipulationTheses/getNumberOfDirectors.php");
+            include("/home/3binf2/tristan.martinez/WWW-perso/projet_dev_web/manipulationTheses/getNumberOfEtablishment.php");
+            include("/home/3binf2/tristan.martinez/WWW-perso/projet_dev_web/manipulationTheses/getNumberOfThesesAccessible.php");
+            include("/home/3binf2/tristan.martinez/WWW-perso/projet_dev_web/manipulationTheses/getStatsAccessible.php");
+            include("/home/3binf2/tristan.martinez/WWW-perso/projet_dev_web/manipulationTheses/getStatsDiscipline.php");
+            include("/home/3binf2/tristan.martinez/WWW-perso/projet_dev_web/manipulationTheses/getStatsEmbargo.php");
+            include("/home/3binf2/tristan.martinez/WWW-perso/projet_dev_web/manipulationTheses/getStatsLangue.php");
+            include("/home/3binf2/tristan.martinez/WWW-perso/projet_dev_web/scripts/getstatsByDate.php");
+            include("/home/3binf2/tristan.martinez/WWW-perso/projet_dev_web/scripts/getAllBiGSubjects.php");
+
+            /*
             include("../include/connexion.inc.php");
             include("../scripts/getTheses.php");
             include("../manipulationTheses/getNumberOfTheses.php");
@@ -37,6 +53,7 @@
             include("../manipulationTheses/getStatsLangue.php");
             include("../scripts/getstatsByDate.php");
             include("../scripts/getAllBiGSubjects.php");
+            */
             $theses = get_these($cnx);
             $numberOfThese = getNumberOfTheses($theses);
             $numberOfDirectors = getNumberOfDirectors($cnx, $theses);
@@ -47,11 +64,12 @@
             $statsEmbargo = getStatsEmbargo($theses);
             $statsLangue = getStatsLangue($theses);
             $allBiGSubjects = getAllBiGSubjects($cnx);
+            /*
             if (!isset($_POST["date"])) {
                 $statsDate = getStatsDate($cnx, 'year');
             } else {
                 $statsDate = getStatsDate($cnx, $_POST["date"]);
-            }
+            }*/
         ?>
 
         
@@ -87,7 +105,7 @@
                 </div>
             </div>
             <input type="reset" name="reset" value="Effacez"/> <input type="submit" name="submit" value="Rechercher"/>
-            <button onclick="location.href = './alert/';">Gestion des alertes</button>
+            <a class="bouton" href = '/home/3binf2/tristan.martinez/WWW-perso/projet_dev_web/src/alert/'>Gestion des alertes</a>
 
         </div>
     </form>
