@@ -1,6 +1,6 @@
 <?php
 
-    function getNumberOfThesesAccessible($cnx, $theses) {
+    function getNumberOfThesesAccessible($theses) {
         if (isset($_SESSION["login"])){
             $nbaccessible = 0;
             foreach($theses as $these) {

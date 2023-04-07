@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,24 +12,15 @@
 <body>
 <hr>
     <main>
-            <!-- ancien auth <div class="formulaire">
+            <div class="formulaire">
                 <h1>Connexion</h1>
                 <form action="authentification.php" method="POST">
                     <b>Login:</b> <input type="text" name="login" required class="champs login"/>
-                    <b>Mot de passe:</b><input type="text" name="mdp" required class="champs mdp"/><br />
+                    <b>Mot de passe:</b><input type="password" name="mdp" required class="champs mdp"/><br />
                     <input type="reset" name="reset" value="Effacez" class = "boutton_formulaire"/> <input type="submit" name="submit" value="Validez" class = "boutton_formulaire"/>
                 </form>
-            </div> -->
-        <?php
-            header('Location: ./src/');
-        ?>
+            </div>
     </main>
-<?php
-        // si on veut extraire le jeu de données
-        //include("include/connexion.inc.php");
-        //include("./scripts_extract/extract_theses.php");
-        //extract_theses($cnx);
-?>        
 </body>
 </html>
 

@@ -1,6 +1,6 @@
 <?php
 
-    function getNumberOfTheses($cnx, $theses) {
+    function getNumberOfTheses($theses) {
         return count($theses);
     }
 

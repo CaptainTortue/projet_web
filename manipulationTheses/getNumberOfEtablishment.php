@@ -1,6 +1,6 @@
 <?php
 
-    function getNumberOfEtablishment($cnx, $theses) {
+    function getNumberOfEtablishment($theses) {
         if (isset($_SESSION["login"])){
             /*
             version appel avec la bdd

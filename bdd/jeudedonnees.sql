@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : mar. 15 nov. 2022 à 20:09
+-- Généré le : ven. 07 avr. 2023 à 19:39
 -- Version du serveur : 8.0.30
--- Version de PHP : 7.4.32
+-- Version de PHP : 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,24 @@ SET time_zone = "+00:00";
 --
 -- Base de données : `projet_web`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `alert`
+--
+
+CREATE TABLE `alert` (
+  `id` int NOT NULL,
+  `titre` varchar(255) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `filtreType` varchar(255) DEFAULT NULL,
+  `filtreNom` varchar(255) DEFAULT NULL,
+  `filtrePrenom` varchar(255) DEFAULT NULL,
+  `filtreTitre` varchar(255) DEFAULT NULL,
+  `filtreDiscipline` varchar(255) DEFAULT NULL,
+  `user` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -2799,7 +2817,7 @@ INSERT INTO `directeurs` (`idThese`, `idPersonne`) VALUES
 
 CREATE TABLE `oai_set_specs` (
   `idThese` int NOT NULL,
-  `code` varchar(8) COLLATE utf8mb4_general_ci NOT NULL
+  `code` varchar(8) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -2811,8 +2829,8 @@ CREATE TABLE `oai_set_specs` (
 CREATE TABLE `partenaires` (
   `id` int NOT NULL,
   `letype` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `nom` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `idref` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL
+  `nom` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `idref` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -6306,8 +6324,8 @@ INSERT INTO `rapporteurs` (`idPersonne`, `idThese`) VALUES
 
 CREATE TABLE `resumes` (
   `idThese` int NOT NULL,
-  `langue` varchar(2) COLLATE utf8mb4_general_ci NOT NULL,
-  `resume` varchar(255) COLLATE utf8mb4_general_ci NOT NULL
+  `langue` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `resume` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -8865,8 +8883,8 @@ INSERT INTO `theses` (`id`, `these_sur_travaux`, `date_soutenance`, `etablisseme
 
 CREATE TABLE `titres` (
   `idThese` int NOT NULL,
-  `langue` varchar(2) COLLATE utf8mb4_general_ci NOT NULL,
-  `titre` varchar(255) COLLATE utf8mb4_general_ci NOT NULL
+  `langue` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `titre` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -10155,8 +10173,8 @@ INSERT INTO `titres` (`idThese`, `langue`, `titre`) VALUES
 
 CREATE TABLE `users` (
   `id` int NOT NULL,
-  `login` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `password` varchar(255) COLLATE utf8mb4_general_ci NOT NULL
+  `login` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -10169,6 +10187,13 @@ INSERT INTO `users` (`id`, `login`, `password`) VALUES
 --
 -- Index pour les tables déchargées
 --
+
+--
+-- Index pour la table `alert`
+--
+ALTER TABLE `alert`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user` (`user`);
 
 --
 -- Index pour la table `auteurs`
@@ -10251,6 +10276,12 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT pour la table `alert`
+--
+ALTER TABLE `alert`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+
+--
 -- AUTO_INCREMENT pour la table `partenaires`
 --
 ALTER TABLE `partenaires`
@@ -10271,6 +10302,12 @@ ALTER TABLE `users`
 --
 -- Contraintes pour les tables déchargées
 --
+
+--
+-- Contraintes pour la table `alert`
+--
+ALTER TABLE `alert`
+  ADD CONSTRAINT `user` FOREIGN KEY (`user`) REFERENCES `users` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
 -- Contraintes pour la table `auteurs`

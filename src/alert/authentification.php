@@ -10,7 +10,7 @@
 </head>
 <body>
     <?php
-        include("./include/connexion.inc.php");
+        include("../../include/connexion.inc.php");
         $login = $_POST['login'];
         $mdp = $_POST['mdp'];
         if ((!isset($_POST['login'])) && (!isset($_POST['mdp']))) {
@@ -21,9 +21,8 @@
         $users->execute();
         foreach ($users as $user) {
             if ($user["login"] == $login && password_verify($mdp, $user["password"])) {
-                echo 'oui';
-                $_SESSION["login"] = $login;
-                header('Location: ./src/');
+                $_SESSION["idUser"] = $user["id"];
+                header('Location: ./alert.php');
                 return;
             } 
         }

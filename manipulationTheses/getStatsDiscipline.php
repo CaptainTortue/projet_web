@@ -1,6 +1,6 @@
 <?php
 
-    function getStatsDiscipline($cnx, $theses) {
+    function getStatsDiscipline($theses) {
         if (isset($_SESSION["login"])){
             $disciplines = array();
             foreach($theses as $these) {
@@ -20,11 +20,13 @@
                         $title = $discipline;
                     }
                 }
-                $element = array();
-                $element["discipline"] = $title;
-                $element["nbThese"] = $nbMax;
-                array_push($bigDisciplines, $element);
-                unset($disciplines[$title]); 
+                if ($nbMax>0) {
+                    $element = array();
+                    $element["discipline"] = $title;
+                    $element["nbThese"] = $nbMax;
+                    array_push($bigDisciplines, $element);
+                    unset($disciplines[$title]);
+                }
             }
             return $bigDisciplines;
         }

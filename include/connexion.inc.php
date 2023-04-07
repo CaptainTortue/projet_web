@@ -4,7 +4,7 @@
     * création d'objet PDO de la connexion qui sera représenté par la variable $cnx
     */
     $nom = "root";
-    $mdp = "Tristan.1999";
+    $mdp = "";
 
     // exec() tout est stocké dans argv pour récupe les paramètre (ou les retours)
     // var_dump() sert de debug, affiche le type taille de la variable

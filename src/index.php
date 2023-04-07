@@ -1,6 +1,12 @@
 <!DOCTYPE html>
-<?php session_start(); ?>
-<html lang="en">
+<?php
+    session_start();
+    $_SESSION["login"] = true;
+    if (!isset($_SESSION["size_texte"])) {
+        $_SESSION["size_texte"] = 1;
+    }
+?>
+<html lang="fr">
 <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -28,18 +34,18 @@
             include("../manipulationTheses/getStatsAccessible.php");
             include("../manipulationTheses/getStatsDiscipline.php");
             include("../manipulationTheses/getStatsEmbargo.php");
-            include("../scripts/getStatsLangue.php");
+            include("../manipulationTheses/getStatsLangue.php");
             include("../scripts/getstatsByDate.php");
             include("../scripts/getAllBiGSubjects.php");
             $theses = get_these($cnx);
-            $numberOfThese = getNumberOfTheses($cnx, $theses);
+            $numberOfThese = getNumberOfTheses($theses);
             $numberOfDirectors = getNumberOfDirectors($cnx, $theses);
-            $numberOfEtablishment = getNumberOfEtablishment($cnx, $theses);
-            $numberOfTheseAccessible = getNumberOfThesesAccessible($cnx, $theses);
-            $statsAccessible = getStatsAccessible($cnx, $theses);
-            $statsDiscipline = getStatsDiscipline($cnx, $theses);
-            $statsEmbargo = getStatsEmbargo($cnx, $theses);
-            $statsLangue = getStatsLangue($cnx);
+            $numberOfEtablishment = getNumberOfEtablishment($theses);
+            $numberOfTheseAccessible = getNumberOfThesesAccessible($theses);
+            $statsAccessible = getStatsAccessible($theses);
+            $statsDiscipline = getStatsDiscipline($theses);
+            $statsEmbargo = getStatsEmbargo($theses);
+            $statsLangue = getStatsLangue($theses);
             $allBiGSubjects = getAllBiGSubjects($cnx);
             if (!isset($_POST["date"])) {
                 $statsDate = getStatsDate($cnx, 'year');
@@ -50,49 +56,47 @@
 
         
 </head>
-<body>
+    <body>
     <?php if (!isset($_SESSION["login"])) {header('Location: ../index.php');} ?>
-    <nav class="navbar navbar-expand-lg bg-light">
-    <div class="container-fluid">
-        <h1>Thèses</h1>
-    </div>
-    </nav>
+    <h1 class="titre">Thèses</h1>
 
 
     
     <form action="index.php" method="POST">
-    <div class="group_form">
-        <div class="computer_flex wrap">
-            <div class="element_form computer_flex"> 
-                <b>Type de personne:</b>
-                <select name="type" id="type">
-                    <option value="auteurs">Auteur</option>
-                    <option value="directeurs">Directeur</option>
-                    <option value="rapporters">Rapporter</option>
-                </select>
+        <div class="group_form">
+            <div class="computer_flex wrap">
+                <div class="element_form computer_flex">
+                    <b>Type de personne: </b>
+                    <select name="type" id="type">
+                        <option value="auteurs">Auteur</option>
+                        <option value="directeurs">Directeur</option>
+                        <option value="rapporters">Rapporter</option>
+                    </select>
+                </div>
+                <div class="element_form">
+                    <b>Nom: </b> <input type="text" name="nom"/>
+                </div>
+                <div class="element_form">
+                    <b>Prenom: </b> <input type="text" name="prenom"/>
+                </div>
+                <div class="element_form">
+                    <b>Titre: </b><input type="text" name="titre"/>
+                </div>
+                <div class="element_form">
+                    <b>Discipline: </b><input type="text" name="discipline"/>
+                </div>
             </div>
-            <div class="element_form"> 
-                <b>Nom:</b> <input type="text" name="nom"/>
-            </div>
-            <div class="element_form"> 
-                <b>Prenom:</b> <input type="text" name="prenom"/>
-            </div>
-            <div class="element_form"> 
-                <b>Titre</b><input type="text" name="titre"/>
-            </div>
-            <div class="element_form"> 
-                <b>Discipline</b><input type="text" name="discipline"/><br />
-            </div>
+            <input type="reset" name="reset" value="Effacez"/> <input type="submit" name="submit" value="Rechercher"/>
+            <button onclick="location.href = './alert/';">Gestion des alertes</button>
+
         </div>
-        <input type="reset" name="reset" value="Effacez"/> <input type="submit" name="submit" value="Rechercher"/>
-        </form>
-    </div>
-    
+    </form>
+
 
     <div id="container"></div>
 
     <div class="stats">
-        <h4>Quelques statistiques sur les thèses</h4>
+        <h4>Quelques statistiques sur les thèses :</h4>
 
         <div class="computer_flex center wrap">
             <h5>Nombre de thèses soutenu: <?php echo $numberOfThese?></h5>
@@ -124,11 +128,11 @@
 
 
     <script>
-const text = "<?php
-    foreach ($allBiGSubjects as $subject) {
-        echo $subject["sujet"]." ";
-    }
-?>"
+    const text = "<?php
+        foreach ($allBiGSubjects as $subject) {
+            echo $subject["sujet"]." ";
+        }
+    ?>"
     lines = text.replace(/[():'?0-9]+/g, '').split(/[,\. ]+/g),
     data = lines.reduce((arr, word) => {
         let obj = Highcharts.find(arr, obj => obj.name === word);
@@ -370,8 +374,8 @@ Highcharts.chart('container', {
                 name: 'Share',
                 colorByPoint: true,
                 data: [
-                    { name: 'Avec embargo', y: <?php echo $statsEmbargo[0]["sous_embargo"]; ?> },
-                    { name: 'Sans embargo', y: <?php echo $statsEmbargo[0]["sans_embargo"]; ?> },
+                    { name: 'Avec embargo', y: <?php echo $statsEmbargo[0]; ?> },
+                    { name: 'Sans embargo', y: <?php echo $statsEmbargo[1]; ?> },
                 ]
             }]
         });
@@ -441,19 +445,10 @@ Highcharts.chart('container', {
 
 
 
-
 <?php
-    /* test de base (peut encore etre utile) 
-    $request ="SELECT * FROM theses";
-    $theses = $cnx->prepare($request);
-    $theses->execute();
-    foreach($theses as $these) {
-        echo $these["id"];
-    } */
-
             
     if (isset($theses)) {
-        echo '<div class="accordion" id="these">';
+        echo '<div class="accordion" id="theses">';
         $id = 0;
         foreach($theses as $these) {
             if (isset($these["titre"])) {
@@ -461,40 +456,53 @@ Highcharts.chart('container', {
                 '<div class="accordion-item" style="border-width: 4px; border-color: black;">
                     <h2 class="accordion-header" id="heading'.$id.'">
                     <button class="accordion-button collapsed " type="button" data-bs-toggle="collapse" data-bs-target="#collapse'.$id.'" aria-expanded="true" aria-controls="collapse'.$id.'">
-                        '.$these["titre"].'
+                        <p>'.$these["titre"].'</p>
                     </button>
                     </h2>
                     <div id="collapse'.$id.'" class="accordion-collapse collapse" aria-labelledby="heading'.$id.'" data-bs-parent="#these">
-                    <div class="accordion-body">';
+                    <div class="accordion-body"><p>';
                     echo $these["id"]."   ".$these["discipline"]."     ".$these["etablissements_soutenance"]."     ".$these["date_soutenance"]."     ".$these["status"]."     ".$these["langue"]."     ".$these["nnt"]."     ".$these["nom"]."     ".$these["prenom"];
                     if (isset($these["resume"])) {
                         echo $these["resume"];
                     }
                     echo '<a href="https://theses.fr/'.$these["nnt"].'"> Accéder à la thèse</a>';
-                    echo '</div>
+                    echo '</p></div>
                     </div>
                 </div>';
                 $id += 1;
             }
         }
     }
-    ?>     
+    ?>
+    </div>
+
     <footer> 
     <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
             <p class="navbar-nav mb-2 mb-lg-0">Tristan Martinez</p>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mb-2 mb-lg-0" style="margin-left: auto;">
-                    <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href = './reporting.html'>Reporting</a>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href = '#'>Accessibilité</a> <!--TODO a remplacer par le lien -->
-                    </li>
-                </ul>
-            </div>
+
+                        <b>Taille de texte : </b>
+                        <select id="text_size" name="date">
+                            <option value="1">Normal</option>
+                            <option value="1.2">Large</option>
+                            <option value="1.5">Très large</option>
+                        </select>
         </div>
     </nav>
     </footer>   
 </body>
+<script>
+
+    let select = document.getElementById('text_size');
+
+    select.addEventListener('change', () => {
+        var r = document.querySelector(':root');
+        const taillePolice = select.value;
+        r.style.setProperty('--text_size', taillePolice);
+        console.log(select.value)
+        console.log(getComputedStyle(document.documentElement)
+            .getPropertyValue('--my-variable-name'))
+    });
+</script>
 </html>

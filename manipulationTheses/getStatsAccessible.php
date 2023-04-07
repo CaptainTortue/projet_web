@@ -1,6 +1,6 @@
 <?php
 
-    function getStatsAccessible($cnx, $theses) {
+    function getStatsAccessible($theses) {
         if (isset($_SESSION["login"])){
             $nbaccessible = 0;
             $nbnonaccessible = 0;
